@@ -1,0 +1,83 @@
+<div class="item">
+    <div>Avatar URL (Foto)</div>
+    <div>
+        <input 
+        type="url" 
+        name="avatar_url" 
+        placeholder="http://"
+        value="{{professor.avatar_url}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Professor(a)</div>
+    <div>
+        <input 
+        type="text" 
+        name="name" 
+        placeholder="Nome Completo"
+        value="{{professor.name}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Data de Nascimento</div>
+    <div>
+        <input 
+        type="date" 
+        name="birth"
+        value="{{professor.birth}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Grau de Escolaridade</div>
+    <div>
+        <input 
+        type="text" 
+        name="education" 
+        placeholder="Ensino ou Graduação"
+        value="{{professor.education}}"
+        >
+    </div>
+</div>
+
+
+<div class="item">
+    <div>Modalidade de Aula</div>
+    <div>
+        <span>
+            <input 
+                type="radio" 
+                name="format" 
+                value="presencial" 
+                {% if professor.format == 'presencial' %}
+                checked
+                {% endif %}> Presencial</span>
+        <span>
+            <input 
+                type="radio" 
+                name="format" 
+                value="EAD"
+                {% if professor.format == 'EAD' %}
+                checked
+                {% endif %}> À distância (EAD)</span>
+    </div>
+</div>
+
+<div class="item">
+    <div>Disciplina(s)</div>
+    <div>
+        <input 
+        type="text" 
+        name="subject" 
+        placeholder="Liste as disciplinas separadas por vírgula"
+        value="{{professor.subject}}" 
+        >
+    </div>
+</div>
+
+<button type="submit">Salvar</button>

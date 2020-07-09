@@ -1,0 +1,125 @@
+<div class="item">
+    <div>Avatar URL (Foto)</div>
+    <div>
+        <input 
+        type="url" 
+        name="avatar_url" 
+        placeholder="http://"
+        value="{{student.avatar_url}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Aluno(a)</div>
+    <div>
+        <input 
+        type="text" 
+        name="name" 
+        placeholder="Nome Completo"
+        value="{{student.name}}"
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>E-mail</div>
+    <div>
+        <input 
+        type="email" 
+        name="email" 
+        placeholder="E-mail principal"
+        value="{{student.email}}"
+        >
+    </div>
+</div>
+
+
+<div class="item">
+    <div>Ano Escolar</div>
+    <select name="year">
+        <option value="5º ano do Ensino Fundamental"
+        {% if student.year  == '5º ano do Ensino Fundamental'%} selected {%endif%}
+        >5º ano do Ensino Fundamental</option>
+        <option value="6º ano do Ensino Fundamental"
+        {% if student.year  == ''%} selected {%endif%}
+        >6º ano do Ensino Fundamental</option>
+        <option value="7º ano do Ensino Fundamental"
+        {% if student.year  == '7º ano do Ensino Fundamental'%} selected {%endif%}
+        >7º ano do Ensino Fundamental</option>
+        <option value="8º ano do Ensino Fundamental"
+        {% if student.year  == '8º ano do Ensino Fundamental'%} selected {%endif%}
+        >8º ano do Ensino Fundamental</option>
+        <option value="9º ano do Ensino Fundamental"
+        {% if student.year  == '9º ano do Ensino Fundamental'%} selected {%endif%}
+        >9º ano do Ensino Fundamental</option>
+        <option value="1º ano do Ensino Médio"
+        {% if student.year  == '1º ano do Ensino Médio'%} selected {%endif%}
+        >2º ano do Ensino Médio</option>
+        <option value="2º anoMed"
+        {% if student.year  == '2º ano do Ensino Médio'%} selected {%endif%}
+        >2º ano do Ensino Médio</option>
+        <option value="3º ano do Ensino Médio"
+        {% if student.year  == '3º ano do Ensino Médio'%} selected {%endif%}
+        >3º ano do Ensino Médio</option>
+    </select>
+    </div>
+
+
+<div class="item">
+    <div>Disciplina(s) ou Necessidades</div>
+    <div>
+        <input 
+        type="text" 
+        name="subject" 
+        placeholder="Liste as disciplinas separadas por vírgula"
+        value="{{student.subject}}" 
+        >
+    </div>
+</div>
+
+<div class="item">
+    <div>Modalidade de Aula</div>
+    <div>
+        <span>
+            <input 
+                type="radio" 
+                name="format" 
+                value="presencial" 
+                {% if student.format == 'presencial' %}
+                checked
+                {% endif %}> Presencial</span>
+        <span>
+            <input 
+                type="radio" 
+                name="format" 
+                value="EAD"
+                {% if student.format == 'EAD' %}
+                checked
+                {% endif %}> À distância (EAD)</span>
+    </div>
+</div>
+
+<div class="item">
+    <div>Carga Horária Semanal</div>
+    <div>
+        <input type="number" name="week_hours" placeholder="Horas" value="{{student.week_hours}}">
+    </div>
+</div>
+
+
+<div class="item">
+    <div>Professor</div>
+    <div>
+    <select name="professor">
+        {% for professor in professorOptions %}
+        <option value="{{professor.id}}"
+        {% if student.professor_id  == professor.id %} selected {%endif%}
+        >{{professor.name}}
+        </option>
+        {%endfor%}
+        </select>
+    </div>
+</div>
+
+<button type="submit">Salvar</button>

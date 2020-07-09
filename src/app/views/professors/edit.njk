@@ -1,0 +1,45 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+<div class="card">
+
+    <section class="avatar"
+        style="background: url({{professor.avatar_url}}) no-repeat center center / cover ">
+    </section>
+
+    <section class="details">
+        <h2>
+            Editar Cadastro do Profesor(A)
+        </h2>
+        <form id='form-delete' action="/professors?_method=DELETE" method="POST">
+            <input type="hidden" name="id" value="{{professor.id}}">
+            <button type="submit">Deletar</button>
+        </form>
+
+        <form method="POST" action="/professors?_method=PUT">
+            {% include 'professors/fields.njk' %}
+            <input type="hidden" name="id" value="{{professor.id}}">
+        </form>
+
+
+
+    </section>
+
+
+</div>
+
+
+<script>
+
+        const formDelete = document.querySelector('#form-delete')
+        formDelete.addEventListener('submit', function(event) {
+            const confirmation = confirm('Deseja Deletar?!')
+            if(!confirmation) {
+            event.preventDefault()
+        }
+        })
+
+</script>
+
+{% endblock content %}

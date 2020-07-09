@@ -1,0 +1,44 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+    <div class="card table-container">
+
+        <div class="header">
+            <a class = "button" href="/professors/create">Novo</a>
+            <form action="/professors?" method="GET">
+            <input 
+            type="text"
+            name="filter"
+            placeholder="Filtrar por Nome ou Atendimento"
+            value="{{filter}}"
+            >
+            <button type="submit">Filtrar</button>
+            </form>
+        </div>
+        
+        <table width="100%">
+            <thead>
+                <tr>
+                    <th class="named-up">Professor(a)</th>
+                    <th>Disciplina</th>
+                    <th>Alunos</th>
+                    <th>Útil</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for professor in professors %}
+                <tr>
+                    <td ><span style='background-image: url({{professor.avatar_url}})'></span>
+                    <div class="named"> {{professor.name}} </div>
+                    </td>
+                    <td class="materia">{{professor.subject}}</td>
+                    <td class="materia">{{professor.total_students}}</td>
+                    <td><a href="/professors/{{professor.id}}">ver</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+{% endblock content %}

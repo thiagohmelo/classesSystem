@@ -1,0 +1,61 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+<div class="card">
+    <section class="avatar"
+        style="background: url({{student.avatar_url}}) no-repeat center center / cover ">
+    </section>
+    <section class="details">
+        <h2>
+            Detalhes
+        </h2>
+
+        <div class="item">
+            <div>Nome Completo</div>
+            <div>{{student.name}}</div>
+        </div>
+
+
+        <div class="item">
+            <div>E-mail</div>
+            <div>{{student.email}}</div>
+        </div>
+
+        <div class="item">
+            <div>Modalidade de aula</div>
+            <div>{{'Presencial' if student.format == 'presencial' else 'EAD - Ensino à Distancia' }}</div>
+        </div>
+
+        <div class="item">
+            <div>Disciplina(s) ou Necessidades</div>
+            <div>
+                {% for subject in student.subject %}
+                <span>{{subject}}</span>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+        <div class="item">
+            <div>Ano Escolar</div>
+            <div>{{student.year}}</div>
+        </div>
+
+        <div class="item">
+            <div>Carga Horária Semanal</div>
+            <div>{{student.week_hours}} horas semanais</div>
+        </div>
+
+        <div class="item">
+            <div>Aluno de</div>
+            <div>{{student.professor_name}}</div>
+        </div>
+
+
+        <a href="/students/{{student.id}}/edit" class="button">Editar</a>
+
+    </section>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,54 @@
+{% extends 'layout.njk' %}
+
+{% block content %}
+
+<div class="card">
+    <section class="avatar"
+        style="background: url({{professor.avatar_url}}) no-repeat center center / cover ">
+    </section>
+    <section class="details">
+        <h2>
+            Detalhes
+        </h2>
+
+        <div class="item">
+            <div>Nome Completo</div>
+            <div>{{professor.name}}</div>
+        </div>
+
+        <div class="item">
+            <div>Idade</div>
+            <div>{{professor.birth}}</div>
+        </div>
+
+        <div class="item">
+            <div>Grau de Escolaridade</div>
+            <div>{{professor.education}}</div>
+        </div>
+
+        <div class="item">
+            <div>Modalidade de aula</div>
+            <div>{{'Presencial' if professor.format == 'presencial' else 'EAD - Ensino à Distancia' }}</div>
+        </div>
+
+        <div class="item">
+            <div>Disciplina(s)</div>
+            <div>
+                {% for subject in professor.subject %}
+                <span>{{subject}}</span>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+        <div class="item">
+            <div>Desde:</div>
+            <div>{{professor.created_at}}</div>
+        </div>
+
+        <a href="/professors/{{professor.id}}/edit" class="button">Editar</a>
+
+    </section>
+</div>
+
+{% endblock content %}
